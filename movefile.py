@@ -31,12 +31,22 @@ def mkdir(path):
         return False
 
 def move(dirname, oldfile,newfilename):
+
+    dirname = "userEmoji/"+dirname
+
+    print dirname
+    print oldfile
+    print newfilename
+
+
     mkdir(dirname)
     try:
 
-        os.rename(oldfile,newfilename+".gif")
+        os.rename(oldfile,newfilename)
 
-        shutil.move(oldfile, dirname + "/" + oldfile)
+        print dirname + "/" + newfilename
+
+        shutil.move(newfilename, dirname + "/" + newfilename)
         print '移动' + oldfile + "成功"
     except IOError:
         print "目录不存在"

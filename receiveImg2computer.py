@@ -40,6 +40,7 @@ def download_files(msg):
     print "dirname:"+username
 
     filename = re.search('cdnurl = "(.*?)" designerid', str(msg), re.S).group(1)
+    filename = filename.replace("/","").replace(':',"").replace(".","")+".gif"
     print "filename:"+filename
 
     isExists = os.path.exists(username + "/" + filename)
