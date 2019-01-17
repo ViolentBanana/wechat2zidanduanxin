@@ -64,11 +64,11 @@ def download_files(msg):
             u'已下载到本地')
 
 if __name__ == '__main__':
-    # itchat.auto_login()
+    itchat.auto_login()
     # 命令行显示二维码
     # itchat.auto_login(enableCmdQR=True)
     # 如部分的linux系统，块字符的宽度为一个字符（正常应为两字符），故赋值为2
-    itchat.auto_login(enableCmdQR=2)
+    # itchat.auto_login(enableCmdQR=2)
     # 获取自己的UserName
     myUserName = itchat.get_friends(update=True)[0]["UserName"]
     itchat.run()
