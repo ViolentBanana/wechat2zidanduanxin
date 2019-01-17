@@ -59,9 +59,9 @@ def download_files(msg):
     #     VIDEO: 'vid', }.get(msg.type, 'fil')
     # return '@%s@%s' % (typeSymbol, msg.fileName)
 
-    # return ({'Picture': u'图片', 'Recording': u'录音',
-    #         'Attachment': u'附件', 'Video': u'视频', }.get(msg['Type']) +
-    #         u'已下载到本地')
+    return ({'Picture': u'图片', 'Recording': u'录音',
+            'Attachment': u'附件', 'Video': u'视频', }.get(msg['Type']) +
+            u'已下载到本地')
 
 if __name__ == '__main__':
     # itchat.auto_login()
