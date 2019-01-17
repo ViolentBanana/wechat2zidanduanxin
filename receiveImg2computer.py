@@ -34,31 +34,34 @@ def text_reply(msg):
 
 @itchat.msg_register([PICTURE, RECORDING, ATTACHMENT, VIDEO])
 def download_files(msg):
-    print str(msg)
 
-    username = re.search("u'', u'PYInitial': u'(.*?)',", str(msg), re.S).group(1)
-    print "dirname:"+username
+    if not msg['FromUserName'] == myUserName:
 
-    filename = re.search('cdnurl = "(.*?)" designerid', str(msg), re.S).group(1)
-    filename = filename.replace("/","").replace(':',"").replace(".","")+".gif"
-    print "filename:"+filename
+        print str(msg)
 
-    isExists = os.path.exists(username + "/" + filename)
+        username = re.search("u'PYInitial': u'(.*?)',", str(msg), re.S).group(1)
+        print "dirname:"+username
 
-    if (isExists):
-        print "已存在不保存文件"
-    else:
-        msg.download(msg.fileName)
-        movefile.move(username, msg.fileName,filename)
+        filename = re.search('cdnurl = "(.*?)" designerid', str(msg), re.S).group(1)
+        filename = filename.replace("/","").replace(':',"").replace(".","")+".gif"
+        print "filename:"+filename
+
+        isExists = os.path.exists(username + "/" + filename)
+
+        if (isExists):
+            print "已存在不保存文件"
+        else:
+            msg.download(msg.fileName)
+            movefile.move(username, msg.fileName,filename)
 
     # typeSymbol = {
     #     PICTURE: 'img',
     #     VIDEO: 'vid', }.get(msg.type, 'fil')
     # return '@%s@%s' % (typeSymbol, msg.fileName)
 
-    return ({'Picture': u'图片', 'Recording': u'录音',
-            'Attachment': u'附件', 'Video': u'视频', }.get(msg['Type']) +
-            u'已下载到本地')
+    # return ({'Picture': u'图片', 'Recording': u'录音',
+    #         'Attachment': u'附件', 'Video': u'视频', }.get(msg['Type']) +
+    #         u'已下载到本地')
 
 if __name__ == '__main__':
     # itchat.auto_login()
