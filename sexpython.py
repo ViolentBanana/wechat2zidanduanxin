@@ -2,7 +2,7 @@
 import itchat
 
 # 先登录
-itchat.login()
+itchat.auto_login(enableCmdQR=2)
 
 # 获取好友列表
 friends = itchat.get_friends(update=True)[0:]
@@ -13,6 +13,8 @@ male = female = other = 0
 # 遍历这个列表，列表里第一位是自己，所以从"自己"之后开始计算
 # 1表示男性，2女性
 for i in friends[1:]:
+    print i
+
     sex = i["Sex"]
     if sex == 1:
         male += 1
@@ -28,3 +30,5 @@ total = len(friends[1:])
 print u"男性好友：%.2f%%" % (float(male) / total * 100)
 print u"女性好友：%.2f%%" % (float(female) / total * 100)
 print u"其他：%.2f%%" % (float(other) / total * 100)
+
+itchat.logout()
