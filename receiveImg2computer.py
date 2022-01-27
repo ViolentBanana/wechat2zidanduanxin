@@ -44,7 +44,6 @@ def text_reply(msg):
                 print content
 
                 author = itchat.search_friends(name=username)[0]
-
                 author.send(content)
             except:
                 print "转发失败"
@@ -52,10 +51,10 @@ def text_reply(msg):
         else:
 
             author = itchat.search_friends(name='CHEN')[0]
-            author.send((u"@%s@ 的信息：%s\n" %
+            author.send(u"[%s]收到好友@%s 的信息：%s\n" %(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(msg['CreateTime'])),
                          msg['User']['NickName'],
                          msg['Text']))
-            #
+
             # itchat.send_msg(u"[%s]2收到好友@%s 的信息：%s\n" %
             #                 (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(msg['CreateTime'])),
             #                  msg['User']['NickName'],
