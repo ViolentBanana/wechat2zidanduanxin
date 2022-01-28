@@ -19,13 +19,13 @@ def text_reply(msg):
         # 发送一条提示给文件助手
         global userkey
 
-        print msg
+        print (msg)
         # name = itchat.search_friends(name=u'CHEN')
         # chen = name[0]["UserName"]
-        print msg['FromUserName']
-        print userkey
+        print (msg['FromUserName'])
+        print (userkey)
         if msg['FromUserName'] == userkey:
-            print ""
+            print ("")
 
             # 转发给好友
             strcontent = msg['Text']
